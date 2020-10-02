@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cloud Cafe</title>
     <link rel="stylesheet" href="./style.css" />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
+
     <script defer src="./app.js"></script>
   </head>
   <body>
@@ -19,5 +23,21 @@
 
       <ul class="cafe-lists"></ul>
     </main>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDgSSiCSEQDZ82mdOznBgsFSiYvUiOX_5k",
+        authDomain: "cafes-4e7a4.firebaseapp.com",
+        databaseURL: "https://cafes-4e7a4.firebaseio.com",
+        projectId: "cafes-4e7a4",
+        storageBucket: "cafes-4e7a4.appspot.com",
+        messagingSenderId: "270471587474",
+        appId: "1:270471587474:web:c73f29f7fc7e2eb950e84b",
+        measurementId: "G-N66V2NQL9F",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
   </body>
 </html>

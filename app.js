@@ -1,14 +1,12 @@
 const cafeForm = document.querySelector("#cafe-form");
 const cafeList = document.querySelector(".cafe-lists");
 
-// 1) Form Submit
-cafeForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+const renderItems = (doc) => {
+  const cafeCity = doc.cafecity;
+  const cafeName = doc.cafename;
+  const docId = doc.id;
 
-  const cafeName = cafeForm.cafeName.value;
-  const cafeCity = cafeForm.cafeCity.value;
-
-  const htmlElement = `<li class="cafe-info"> 
+  const htmlElement = `<li data-id=${docId} class="cafe-info"> 
       <div class="cafe-details">
         <h4>${cafeName}</h4>
         <p>${cafeCity}</p>
@@ -16,9 +14,29 @@ cafeForm.addEventListener("submit", (e) => {
 
       <span class="delete-cafe">X</span>
   </li>`;
-
   cafeList.innerHTML += htmlElement;
-  cafeForm.reset();
+};
+
+/** --- STEP-1) CONNECTING TO DATABASE --- */
+db.collection("cafes")
+  .get()
+  .then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      renderItems(doc.data());
+    });
+  });
+
+// 1) Adding to the record to the DataBase document
+cafeForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  db.collection("cafes")
+    .add({
+      cafename: cafeForm.cafeName.value,
+      cafecity: cafeForm.cafeCity.value,
+    })
+    .then(() => console.log("Data Added Successfully !!!"))
+    .catch(() => console.log("ERROR: Adding code to the backend"));
 });
 
 // 2) Remove the Item using Event Bubbling
