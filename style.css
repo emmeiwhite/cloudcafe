@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+}
+
+.content {
+  max-width: 600px;
+  margin: 5rem auto;
+  border: 1px solid #777;
+  min-height: 300px;
+  padding: 1rem;
+  border-top-right-radius: 25px;
+}
+
+.add-cafe-form {
+  display: flex;
+}
+
+.add-cafe-form input {
+  flex: 1;
+  border: 1px solid #ccc;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #777;
+}
+.add-cafe-form button {
+  flex: 1;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  border: 1px solid #777;
+}
